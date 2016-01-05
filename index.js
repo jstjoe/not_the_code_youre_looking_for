@@ -50,7 +50,7 @@ function callback(err, req, result) {
   }
 }
 function smashThatLimit() {
-  us.times(3000, function() {
+  us.times(n, function() {
     console.log('running');
     zd.tickets.show(519, callback);
   });
