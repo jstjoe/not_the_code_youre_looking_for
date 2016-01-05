@@ -36,14 +36,20 @@ var zd = zendesk.createClient({
   remoteUri: 'https://itjoe.zendesk.com/api/v2'
 });
 // how many times should we hit this thing?
-var n = 3000;
+var n = process.argv[2] || 3000;
 // SMASH IT!
 smashThatLimit();
 
 // the guts
 function callback(err, req, result) {
   if (err) {
-    console.dir(JSON.stringify(err));
+    // console.dir(JSON.stringify(err));
+    if(err.statusCode == 429) {
+      console.log('429: just wait '+err.retryAfter+' second(s)');
+    } else {
+      console.log(err);
+    }
+    
     return;
   } else {
     console.log('all good');
@@ -55,3 +61,6 @@ function smashThatLimit() {
     zd.tickets.show(519, callback);
   });
 }
+process.on('exit', function(code) {
+  console.log('PEACE');
+});
