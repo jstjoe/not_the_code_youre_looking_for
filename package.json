@@ -1,0 +1,16 @@
+{
+  "name": "rate_limit_smash",
+  "version": "1.0.0",
+  "description": "Hit the Zendesk API rate limit.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "joe@zendesk.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "node-zendesk": "^1.1.5",
+    "underscore": "^1.8.3"
+  }
+}
